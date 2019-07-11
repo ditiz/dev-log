@@ -1,0 +1,62 @@
+$background-color: #000;
+$primary-color-text: #fff;
+$primary-color-border: #fff;
+$item-color-border: yellow;
+$item-color-text: $item-color-border;
+$action-color-border: purple;
+$action-color-text: $action-color-border;
+
+body {
+  background: $background-color;
+  color: $primary-color-text;
+}
+
+.app {
+  header {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+
+    h1 {
+      font-size: 3rem;
+      margin: 1rem auto;
+      padding: 1rem;
+      text-align: center;
+      border: $primary-color-border 5px solid;
+    }
+
+    button {
+      border: $action-color-border 5px solid;
+      color: $action-color-text;
+      background: none;
+      font-size: 2rem;
+      cursor: pointer;
+      
+      &:hover {
+        background: rgba(60,60,60, .5);
+      }
+
+    }
+  }
+
+  main {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+  }
+}
+
+.item {
+  border: $item-color-border 5px solid;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  margin: 3rem auto auto auto;
+
+  h2 {
+    color: $item-color-text;
+    margin: 1rem auto;
+    font-size: 3rem;
+  }
+}
