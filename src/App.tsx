@@ -1,53 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.scss";
-
-interface Item {
-  id: number;
-  name: string;
-  content: string;
-  date: Date;
-}
+import firebase from "./fire";
+import Home from "./components/Home";
+import Auth from "./components/Auth";
+import loader from "./img/loader.gif";
 
 const App: React.FC = () => {
-  const [items, setItems] = useState<Array<Item>>([
-    {
-      id: 0,
-      name: "pouet",
-      content: "first article",
-      date: new Date()
-    },
-    {
-      id: 1,
-      name: "test",
-      content: "seconde article who don't have much to say",
-      date: new Date()
-    }
-  ]);
+  const [user, setUser] = useState<any>(null);
+  const [ready, setReady] = useState<boolean>(false);
 
-  const handleClick = () => {
-    const newItem: Item = {
-      id: items.length,
-      name: `New item ${items.length}`,
-      content: "This is a new item juste create",
-      date: new Date()
-    };
-    setItems([...items.sort((a: Item, b: Item) => a.id - b.id), newItem]);
-  };
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        setUser(user);
+      } else {
+        setUser(null);
+      }
+      setReady(true);
+    });
+  }, []);
 
   return (
     <div className="app">
       <header>
         <h1>Dev-Log</h1>
-        <button onClick={handleClick}>Add</button>
       </header>
-      <main>
-        {items.reverse().map((item: Item) => (
-          <article className="item">
-            <h2>{item.name}</h2>
-            <div>{item.content}</div>
-          </article>
-        ))}
-      </main>
+      {ready ? (
+        <>{user ? <Home /> : <Auth />}</>
+      ) : (
+        <div className="loader">
+          <img src={loader} alt="loader" />
+        </div>
+      )}
     </div>
   );
 };

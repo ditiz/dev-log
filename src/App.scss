@@ -1,14 +1,17 @@
+@import url("https://fonts.googleapis.com/css?family=Fira+Code&display=swap");
+
 $background-color: #000;
 $primary-color-text: #fff;
 $primary-color-border: #fff;
-$item-color-border: yellow;
-$item-color-text: $item-color-border;
+$log-color-border: yellow;
+$log-color-text: $log-color-border;
 $action-color-border: purple;
 $action-color-text: $action-color-border;
 
 body {
   background: $background-color;
   color: $primary-color-text;
+  font-family: "Fira Code", monospace;
 }
 
 .app {
@@ -31,11 +34,10 @@ body {
       background: none;
       font-size: 2rem;
       cursor: pointer;
-      
-      &:hover {
-        background: rgba(60,60,60, .5);
-      }
 
+      &:hover {
+        background: rgba(60, 60, 60, 0.5);
+      }
     }
   }
 
@@ -44,10 +46,49 @@ body {
     flex-flow: row wrap;
     justify-content: space-around;
   }
+
+  footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+
+    button {
+      background: none;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    .sign-out {
+      flex: 1;
+      border: 5px solid #b10dc9;
+      color: #b10dc9;
+
+      &:hover {
+        border: 5px solid #f012be;
+        color: #f012be;
+      }
+    }
+
+    .add-log {
+      flex: 3;
+      text-decoration: none;
+      font-size: 2rem;
+      text-align: center;
+      border: 5px solid #2ecc40;
+      color: #2ecc40;
+
+      &:hover {
+        border: 5px solid #01ff70;
+        color: #01ff70;
+      }
+    }
+  }
 }
 
-.item {
-  border: $item-color-border 5px solid;
+.log {
+  border: $log-color-border 5px solid;
   padding: 1rem 2rem;
   display: flex;
   flex-flow: column nowrap;
@@ -55,8 +96,29 @@ body {
   margin: 3rem auto auto auto;
 
   h2 {
-    color: $item-color-text;
+    color: $log-color-text;
     margin: 1rem auto;
     font-size: 3rem;
   }
+}
+
+.login {
+  border: #39cccc 5px solid;
+
+  h2 {
+    color: #39cccc;
+  }
+}
+
+.newUser {
+  border: #b10dc9 5px solid;
+
+  h2 {
+    color: #b10dc9;
+  }
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
 }
