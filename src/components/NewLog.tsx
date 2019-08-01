@@ -1,9 +1,9 @@
 import React, { useState, FormEvent } from "react";
-import { Log } from "../types";
 import firebase from "../fire";
 import "../styles/NewLog.scss";
+import { withRouter } from "react-router-dom";
 
-const NewLog = () => {
+const NewLog = withRouter(({history}) => {
   const [name, setName] = useState<string>("");
   const [content, setContent] = useState<string>("");
   const [date, setDate] = useState<string>("");
@@ -22,7 +22,9 @@ const NewLog = () => {
       firebase
         .database()
         .ref("users/" + currentUser.uid + "/logs")
-        .push(newLog);
+				.push(newLog);
+				
+			history.push('/');
     }
   };
 
@@ -64,6 +66,6 @@ const NewLog = () => {
       </main>
     </div>
   );
-};
+});
 
 export default NewLog;

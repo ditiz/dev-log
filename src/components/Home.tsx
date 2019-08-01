@@ -12,7 +12,7 @@ const Home = () => {
     const currentUser = firebase.auth().currentUser;
 
     if (currentUser !== null) {
-      let logs = firebase
+      firebase
         .database()
         .ref("users/" + currentUser.uid + "/logs")
         .on("value", snap => {
@@ -23,6 +23,8 @@ const Home = () => {
           setLogs(logs);
         });
     }
+
+    return 
   }, []);
 
   const signOut = () => {

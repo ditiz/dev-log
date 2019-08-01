@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import firebase from "../fire";
 
 const Login = () => {
-  const [email, setEmail] = useState("pouet@pouet.com");
-  const [password, setPassword] = useState("pouet3838@");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

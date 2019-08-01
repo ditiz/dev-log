@@ -8,13 +8,15 @@ interface LogProps {
 
 const LogElement = ({ log }: LogProps) => {
   const removeLog = () => {
-    const currentUser = firebase.auth().currentUser;
-    if (currentUser && log.id) {
-      firebase
-        .database()
-        .ref("users/" + currentUser.uid + "/logs")
-        .child(log.id)
-        .remove();
+    if (window.confirm("Are you sure you want to delete this log?")) {
+      const currentUser = firebase.auth().currentUser;
+      if (currentUser && log.id) {
+        firebase
+          .database()
+          .ref("users/" + currentUser.uid + "/logs")
+          .child(log.id)
+          .remove();
+      }
     }
   };
 
