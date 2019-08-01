@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import firebase from "../fire";
 import { Log } from "../types";
 import { Link } from "react-router-dom";
+import "../styles/Home.scss";
+import LogElement from "./Log";
 
 const Home = () => {
   const [logs, setLogs] = useState<Array<Log>>([]);
@@ -12,15 +14,16 @@ const Home = () => {
     if (currentUser !== null) {
       let logs = firebase
         .database()
-        .ref("users/" + currentUser.uid)
-        .once("value")
-        .then(snap => {
-          setLogs(snap.val().logs);
+        .ref("users/" + currentUser.uid + "/logs")
+        .on("value", snap => {
+          let logs: Array<Log> = [];
+          snap.forEach(data => {
+            logs.push({ id: data.key, ...data.val() });
+          });
+          setLogs(logs);
         });
     }
   }, []);
-
-  const addLog = () => {};
 
   const signOut = () => {
     firebase.auth().signOut();
@@ -30,15 +33,12 @@ const Home = () => {
     <>
       <main>
         {logs.map((log: Log) => (
-          <article className="log" key={log.id}>
-            <h2>{log.name}</h2>
-            <div>{log.content}</div>
-          </article>
+          <LogElement key={log.id} log={log} />
         ))}
       </main>
       <footer>
         <Link to="/newLog" className="add-log">
-            New Log
+          New Log
         </Link>
         <button className="sign-out" onClick={signOut}>
           SignOut

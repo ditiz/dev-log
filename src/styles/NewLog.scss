@@ -1,0 +1,61 @@
+.new-log {
+  header {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+
+    h1 {
+      font-size: 3rem;
+      margin: 1rem auto;
+      padding: 1rem;
+      text-align: center;
+      border: #fff 5px solid;
+    }
+  }
+
+  main {
+    display: flex;
+    justify-content: center;
+    height: 50vh;
+
+    form {
+      width: 50vw;
+      border: 5px solid #0074D9;
+      display: flex;
+      flex-flow: column;
+      justify-content: space-between;
+      padding: 5px;
+
+      label {
+        color: #7FDBFF;
+        display: flex;
+        flex-flow: column;
+
+        input,
+        textarea {
+          margin: 1rem 2rem;
+          border-radius: 0;
+          border: 2px solid #0074D9;
+          background: #AAAAAA;
+          font-size: 1rem;
+        }
+
+        textarea {
+            height: 5rem;
+        }
+      }
+
+      input[type="submit"] {
+        cursor: pointer;
+        background: none;
+        border: 5px solid #0074D9;
+        color: #7FDBFF;
+        font-size: 1rem;
+
+        &:hover {
+            border: 5px solid #7FDBFF;
+        }
+      }
+    }
+  }
+}

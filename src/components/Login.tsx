@@ -3,7 +3,7 @@ import firebase from "../fire";
 
 const Login = () => {
   const [email, setEmail] = useState("pouet@pouet.com");
-  const [password, setPassword] = useState("pouet38383@");
+  const [password, setPassword] = useState("pouet3838@");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

@@ -1,0 +1,38 @@
+$log-color-border: yellow;
+$log-color-text: $log-color-border;
+
+main {
+  overflow: auto;
+  height: 70vh;
+}
+
+.log {
+  border: $log-color-border 5px solid;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  margin: 3rem auto auto auto;
+  max-width: 15rem;
+  position: relative;
+
+  h2 {
+    color: $log-color-text;
+    margin: 1rem auto;
+    font-size: 2rem;
+  }
+
+  .log_remove {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    background: none;
+    border: 1px solid #ff4136;
+    color: #ff4136;
+    cursor: pointer;
+
+    &:hover {
+        background: rgba(255,65,54, .3);
+    }
+  }
+}

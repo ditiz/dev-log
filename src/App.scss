@@ -87,21 +87,6 @@ body {
   }
 }
 
-.log {
-  border: $log-color-border 5px solid;
-  padding: 1rem 2rem;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: space-around;
-  margin: 3rem auto auto auto;
-
-  h2 {
-    color: $log-color-text;
-    margin: 1rem auto;
-    font-size: 3rem;
-  }
-}
-
 .login {
   border: #39cccc 5px solid;
 

@@ -1,6 +1,4 @@
 import firebase, { initializeApp, database } from "firebase";
-import withFirebaseAuth from "react-with-firebase-auth";
-import { async } from "q";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDhu54BxvtHFzolGfaiQtciH-WYnid4GF4",
