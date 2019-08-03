@@ -4,9 +4,11 @@ import { Log } from "../types";
 import { Link } from "react-router-dom";
 import "../styles/Home.scss";
 import LogElement from "./Log";
+import loader from "../img/loader.gif";
 
 const Home = () => {
   const [logs, setLogs] = useState<Array<Log>>([]);
+  const [ready, setReady] = useState<boolean>(false);
 
   useEffect(() => {
     const currentUser = firebase.auth().currentUser;
@@ -20,11 +22,10 @@ const Home = () => {
           snap.forEach(data => {
             logs.push({ id: data.key, ...data.val() });
           });
-          setLogs(logs);
+          setLogs(logs.reverse());
+          setReady(true);
         });
     }
-
-    return 
   }, []);
 
   const signOut = () => {
@@ -33,17 +34,23 @@ const Home = () => {
 
   return (
     <>
-      <main>
-        {logs.map((log: Log) => (
-          <LogElement key={log.id} log={log} />
-        ))}
-      </main>
+      {ready ? (
+        <main>
+          {logs.map((log: Log) => (
+            <LogElement key={log.id} log={log} />
+          ))}
+        </main>
+      ) : (
+        <div className="loader">
+          <img src={loader} alt="loader" />
+        </div>
+      )}
       <footer>
         <Link to="/newLog" className="add-log">
           New Log
         </Link>
         <button className="sign-out" onClick={signOut}>
-          SignOut
+          Signout
         </button>
       </footer>
     </>

@@ -26,7 +26,8 @@ const LogElement = ({ log }: LogProps) => {
         X
       </button>
       <h2>{log.name}</h2>
-      <div>{log.content}</div>
+      <div className="log_date">{log.date}</div>
+      <div className="log_content">{log.content}</div>
     </article>
   );
 };

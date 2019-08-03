@@ -3,7 +3,7 @@ $log-color-text: $log-color-border;
 
 main {
   overflow: auto;
-  height: 70vh;
+  height: auto;
 }
 
 .log {
@@ -19,7 +19,11 @@ main {
   h2 {
     color: $log-color-text;
     margin: 1rem auto;
-    font-size: 2rem;
+    font-size: 1.3rem;
+
+    &::first-letter {
+      text-transform: capitalize;
+    }
   }
 
   .log_remove {
@@ -35,4 +39,10 @@ main {
         background: rgba(255,65,54, .3);
     }
   }
+
+  .log_date {
+    margin-bottom: .5rem;
+    color: #aaa;
+  }
 }
+
