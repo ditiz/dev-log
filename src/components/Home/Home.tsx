@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { database, auth } from "firebase";
-import { Log } from "../types";
+import { Log } from "../../types";
 import { Link } from "react-router-dom";
-import "../styles/Home.scss";
-import LogElement from "./Log";
-import Search from "./Search";
+import "./Home.scss";
+import LogElement from "../Log";
+import Search from "../Search";
 import loader from "../img/loader.gif";
 
 const Home = () => {
