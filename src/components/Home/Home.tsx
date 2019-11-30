@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import "./Home.scss";
 import LogElement from "../Log";
 import Search from "../Search";
-import loader from "../img/loader.gif";
+import loader from "../../img/loader.gif";
 
 const Home = () => {
   const [logs, setLogs] = useState<Array<Log>>([]);
