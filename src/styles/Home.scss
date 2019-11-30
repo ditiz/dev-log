@@ -1,6 +1,40 @@
 $log-color-border: yellow;
 $log-color-text: $log-color-border;
 
+.search {
+  margin: auto;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+
+  form {
+    margin: auto;
+    display: flex;
+    flex-flow: row nowrap;
+    border: 3px solid #39cccc;
+
+    * {
+      border: none;
+      color: #fff;
+      background: #000;
+
+      img {
+        height: auto;
+        height: 20px;
+      }
+    }
+
+    button {
+      padding: .5rem;
+    } 
+
+    input {
+      padding: 0 0.5rem;
+      font-size: 1rem;
+    }
+  }
+}
+
 main {
   overflow: auto;
   height: auto;
@@ -36,13 +70,12 @@ main {
     cursor: pointer;
 
     &:hover {
-        background: rgba(255,65,54, .3);
+      background: rgba(255, 65, 54, 0.3);
     }
   }
 
   .log_date {
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
     color: #aaa;
   }
 }
-

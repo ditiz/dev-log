@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
+import "./fire";
 import "./App.scss";
-import firebase from "./fire";
 import Home from "./components/Home";
 import Auth from "./components/Auth";
 import loader from "./img/loader.gif";
+import { auth } from "firebase";
 
 const App: React.FC = () => {
   const [user, setUser] = useState<any>(null);
   const [ready, setReady] = useState<boolean>(false);
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged(user => {
+    auth().onAuthStateChanged(user => {
       if (user) {
         setUser(user);
       } else {

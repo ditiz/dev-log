@@ -1,5 +1,5 @@
 import React, { useState, FormEvent } from "react";
-import firebase from "../fire";
+import { database, auth } from "firebase";
 import "../styles/NewLog.scss";
 import { withRouter } from "react-router-dom";
 
@@ -17,10 +17,9 @@ const NewLog = withRouter(({ history }) => {
       date: date
     };
 
-    const currentUser = firebase.auth().currentUser;
+    const currentUser = auth().currentUser;
     if (currentUser) {
-      firebase
-        .database()
+      database()
         .ref("users/" + currentUser.uid + "/logs")
         .push(newLog);
 
@@ -34,9 +33,9 @@ const NewLog = withRouter(({ history }) => {
 
   return (
     <div className="new-log">
-        <header>
-          <h1>New Log</h1>
-        </header>
+      <header>
+        <h1>New-Log</h1>
+      </header>
       <section className="new-log_wrapper">
         <main>
           <form onSubmit={handleSubmit}>
@@ -70,10 +69,10 @@ const NewLog = withRouter(({ history }) => {
           </form>
         </main>
         <footer>
-            <button onClick={goBack}>
-              <Arrow />
-            </button>
-          </footer>
+          <button onClick={goBack}>
+            <Arrow />
+          </button>
+        </footer>
       </section>
     </div>
   );

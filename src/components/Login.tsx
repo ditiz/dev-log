@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import firebase from "../fire";
+import { auth } from "firebase";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -8,8 +8,7 @@ const Login = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    firebase
-      .auth()
+    auth()
       .signInWithEmailAndPassword(email, password)
       .catch(error => alert(error.message));
   };

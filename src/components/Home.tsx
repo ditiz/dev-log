@@ -1,22 +1,25 @@
 import React, { useState, useEffect } from "react";
-import firebase from "../fire";
+import { database, auth } from "firebase";
 import { Log } from "../types";
 import { Link } from "react-router-dom";
 import "../styles/Home.scss";
 import LogElement from "./Log";
+import Search from "./Search";
 import loader from "../img/loader.gif";
 
 const Home = () => {
   const [logs, setLogs] = useState<Array<Log>>([]);
   const [ready, setReady] = useState<boolean>(false);
+  const [search, setSearch] = useState<string>("");
 
   useEffect(() => {
-    const currentUser = firebase.auth().currentUser;
+    const currentUser = auth().currentUser;
 
     if (currentUser !== null) {
-      firebase
-        .database()
+      database()
         .ref("users/" + currentUser.uid + "/logs")
+        .orderByChild("name")
+        .startAt("I just finish to make this app functional")
         .on("value", snap => {
           let logs: Array<Log> = [];
           snap.forEach(data => {
@@ -29,11 +32,14 @@ const Home = () => {
   }, []);
 
   const signOut = () => {
-    firebase.auth().signOut();
+    auth().signOut();
   };
 
   return (
     <>
+      <section className="search">
+        <Search search={search} setSearch={setSearch} />
+      </section>
       {ready ? (
         <main>
           {logs.map((log: Log) => (

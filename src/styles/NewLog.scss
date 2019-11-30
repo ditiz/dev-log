@@ -69,15 +69,15 @@
 
     button {
       font-size: 2rem;
-      border: 5px solid #B10DC9;
-      color: #B10DC9;
+      border: 5px solid #0074d9;
+      color: #0074d9;
       background: #000;
-      padding: .5rem 1rem;
+      padding: 0.5rem 1rem;
       cursor: pointer;
 
       &:hover {
-        color: #F012BE;
-        border: #F012BE 5px solid;
+        color: #7fdbff;
+        border: #7fdbff 5px solid;
       }
     }
   }

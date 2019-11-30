@@ -1,4 +1,4 @@
-import firebase, { initializeApp, database } from "firebase";
+import { auth, initializeApp } from "firebase";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDhu54BxvtHFzolGfaiQtciH-WYnid4GF4",
@@ -13,12 +13,8 @@ const firebaseConfig = {
 initializeApp(firebaseConfig);
 
 export const providers = {
-  googleProvider: new firebase.auth.GoogleAuthProvider()
+  googleProvider: new auth.GoogleAuthProvider()
 };
-
-export const db = database();
-
-export const auth = firebase.auth();
 
 export async function createUserWithEmailAndPassword(email, password) {
   return await auth.createUserWithEmailAndPassword(email, password);
@@ -28,4 +24,4 @@ export async function signInWithEmailAndPassword(email, password) {
   auth.signInWithEmailAndPassword(email, password);
 }
 
-export default firebase;
+export default true;
