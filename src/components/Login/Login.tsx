@@ -1,30 +1,23 @@
 import React, { useState } from "react";
 import { auth } from "firebase";
+import "./Login.scss";
 
-const NewUser = () => {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = e => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     auth()
-      .createUserWithEmailAndPassword(email, password)
+      .signInWithEmailAndPassword(email, password)
       .catch(error => alert(error.message));
   };
 
   return (
-    <article className="log newUser">
-      <h2>Inscription</h2>
-      <form
-        onSubmit={handleSubmit}
-        style={{
-          display: "flex",
-          flexFlow: "column",
-          justifyContent: "space-between",
-          height: "10rem"
-        }}
-      >
+    <article className="login-form">
+      <h2>Login</h2>
+      <form onSubmit={handleSubmit}>
         <label>
           Email:
           <input
@@ -51,4 +44,4 @@ const NewUser = () => {
   );
 };
 
-export default NewUser;
+export default Login;

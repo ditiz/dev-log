@@ -1,6 +1,6 @@
 import React from "react";
-import Login from "./Login";
-import NewUser from "./NewUser";
+import Login from "./Login/Login";
+import NewUser from "./NewUser/NewUser";
 
 const Auth = () => (
   <main>

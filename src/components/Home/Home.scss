@@ -1,5 +1,4 @@
-$log-color-border: yellow;
-$log-color-text: $log-color-border;
+@import "../../colors.scss";
 
 .search {
   margin: auto;
@@ -25,8 +24,8 @@ $log-color-text: $log-color-border;
     }
 
     button {
-      padding: .5rem;
-    } 
+      padding: 0.5rem;
+    }
 
     input {
       padding: 0 0.5rem;
@@ -41,7 +40,7 @@ main {
 }
 
 .log {
-  border: $log-color-border 5px solid;
+  border: $log-color 5px solid;
   padding: 1rem 2rem;
   display: flex;
   flex-flow: column nowrap;

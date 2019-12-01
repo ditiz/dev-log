@@ -1,12 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Fira+Code&display=swap");
-
-$background-color: #000;
-$primary-color-text: #fff;
-$primary-color-border: #fff;
-$log-color-border: yellow;
-$log-color-text: $log-color-border;
-$action-color-border: purple;
-$action-color-text: $action-color-border;
+@import "./colors.scss";
 
 body {
   background: $background-color;
@@ -34,7 +27,7 @@ body {
     }
 
     button {
-      border: $action-color-border 5px solid;
+      border: $action-color 5px solid;
       color: $action-color-text;
       background: none;
       font-size: 2rem;
@@ -54,11 +47,11 @@ body {
   }
 
   footer {
-    flex:1;
+    flex: 1;
     width: 100%;
     display: flex;
     justify-content: flex-start;
-    max-height: 3rem;
+    max-height: 5rem;
 
     button {
       background: none;
@@ -85,6 +78,9 @@ body {
       text-align: center;
       border: 5px solid #2ecc40;
       color: #2ecc40;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       &:hover {
         border: 5px solid #01ff70;
