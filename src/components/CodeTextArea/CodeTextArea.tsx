@@ -25,7 +25,7 @@ const CodeTextArea = ({ language, value, setValue }: ICodeTextAreaProps) => {
         onChange={e => setValue(e)}
         editorProps={{ $blockScrolling: true }}
         showGutter={false}
-        style={{ width: "100%", minHeight: "10rem", height: "auto" }}
+        style={{ width: "100%", minHeight: "15rem", height: "auto" }}
       />
     </label>
   );

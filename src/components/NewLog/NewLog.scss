@@ -85,7 +85,11 @@
   .new-log_wrapper {
     display: flex;
     flex-flow: column;
-    justify-content: space-between;
+    justify-content: space-around;
     height: auto;
+
+    main {
+      margin: 1rem auto;
+    }
   }
 }

@@ -1,0 +1,53 @@
+@import "../../colors.scss";
+
+.log {
+  border: $log-color 5px solid;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  margin: 3rem auto auto auto;
+  max-width: 20rem;
+  position: relative;
+
+  &:hover {
+    border: $log-color-active 5px solid;
+  }
+
+  h2 {
+    color: $log-color-text;
+    margin: 1rem 0;
+    font-size: 1.3rem;
+
+    &::first-letter {
+      text-transform: capitalize;
+    }
+
+    &:hover {
+      color: $log-color-active;
+    }
+  }
+
+  .log_remove {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    background: none;
+    border: 1px solid #ff4136;
+    color: #ff4136;
+    cursor: pointer;
+
+    &:hover {
+      background: rgba(255, 65, 54, 0.3);
+    }
+  }
+
+  .log_date {
+    margin-bottom: 0.5rem;
+    color: #aaa;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}

@@ -5,7 +5,7 @@ import "firebase/auth";
 import { Log } from "../../types";
 import { Link } from "react-router-dom";
 import "./Home.scss";
-import LogElement from "../Log";
+import LogElement from "../Log/Log";
 import Search from "../Search";
 import loader from "../../img/loader.gif";
 
@@ -22,7 +22,6 @@ const Home = () => {
         .database()
         .ref("users/" + currentUser.uid + "/logs")
         .orderByChild("name")
-        .startAt("I just finish to make this app functional")
         .on("value", snap => {
           let logs: Array<Log> = [];
           snap.forEach(data => {

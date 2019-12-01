@@ -26,11 +26,12 @@ const NewLog = withRouter(({ history }) => {
     e.preventDefault();
 
     const newLog = {
-      name: name,
+      name,
       html: HTMLContent[0],
       css: CSSContent[0],
       js: JSContent[0],
-      date: date
+      link,
+      date
     };
 
     const currentUser = firebase.auth().currentUser;
