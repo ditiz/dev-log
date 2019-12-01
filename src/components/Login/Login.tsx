@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { auth } from "firebase";
+import * as firebase from "firebase/app";
+import "firebase/auth";
 import "./Login.scss";
 
 const Login = () => {
@@ -9,7 +10,8 @@ const Login = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    auth()
+    firebase
+      .auth()
       .signInWithEmailAndPassword(email, password)
       .catch(error => alert(error.message));
   };

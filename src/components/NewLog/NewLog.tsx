@@ -1,26 +1,42 @@
 import React, { useState, FormEvent } from "react";
-import { database, auth } from "firebase";
-import "./NewLog.scss";
+import * as firebase from "firebase/app";
+import "firebase/database";
+import "firebase/auth";
 import { withRouter } from "react-router-dom";
+import dayjs from "dayjs";
+import "./NewLog.scss";
+import CodeTextArea from "../CodeTextArea/CodeTextArea";
 import Arrow from "../Icons/Arrow";
 
 const NewLog = withRouter(({ history }) => {
   const [name, setName] = useState<string>("");
-  const [content, setContent] = useState<string>("");
-  const [date, setDate] = useState<string>("");
+  const HTMLContent = useState<string>("");
+  const CSSContent = useState<string>("");
+  const JSContent = useState<string>("");
+  const [link, setLink] = useState("");
+  const [date, setDate] = useState<string>(dayjs().format("YYYY-MM-DD"));
+
+  const codeTextAreas = [
+    { name: "html", state: HTMLContent },
+    { name: "css", state: CSSContent },
+    { name: "js", state: JSContent }
+  ];
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
     const newLog = {
       name: name,
-      content: content,
+      html: HTMLContent[0],
+      css: CSSContent[0],
+      js: JSContent[0],
       date: date
     };
 
-    const currentUser = auth().currentUser;
+    const currentUser = firebase.auth().currentUser;
     if (currentUser) {
-      database()
+      firebase
+        .database()
         .ref("users/" + currentUser.uid + "/logs")
         .push(newLog);
 
@@ -49,11 +65,21 @@ const NewLog = withRouter(({ history }) => {
               />
             </label>
 
+            {codeTextAreas.map(language => (
+              <CodeTextArea
+                language={language.name}
+                value={language.state[0]}
+                setValue={language.state[1]}
+                key={language.name}
+              />
+            ))}
+
             <label>
-              Content:
-              <textarea
-                value={content}
-                onChange={e => setContent(e.target.value)}
+              Link:
+              <input
+                type="text"
+                value={link}
+                onChange={e => setLink(e.target.value)}
               />
             </label>
 

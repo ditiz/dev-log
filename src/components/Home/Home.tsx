@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { database, auth } from "firebase";
+import * as firebase from "firebase/app";
+import "firebase/database";
+import "firebase/auth";
 import { Log } from "../../types";
 import { Link } from "react-router-dom";
 import "./Home.scss";
@@ -13,10 +15,11 @@ const Home = () => {
   const [search, setSearch] = useState<string>("");
 
   useEffect(() => {
-    const currentUser = auth().currentUser;
+    const currentUser = firebase.auth().currentUser;
 
     if (currentUser !== null) {
-      database()
+      firebase
+        .database()
         .ref("users/" + currentUser.uid + "/logs")
         .orderByChild("name")
         .startAt("I just finish to make this app functional")
@@ -32,7 +35,7 @@ const Home = () => {
   }, []);
 
   const signOut = () => {
-    auth().signOut();
+    firebase.auth().signOut();
   };
 
   return (

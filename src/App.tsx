@@ -4,14 +4,16 @@ import "./App.scss";
 import Home from "./components/Home/Home";
 import Auth from "./components/Auth";
 import loader from "./img/loader.gif";
-import { auth } from "firebase";
+import * as firebase from "firebase/app";
+import "firebase/auth";
 
 const App: React.FC = () => {
   const [user, setUser] = useState<any>(null);
   const [ready, setReady] = useState<boolean>(false);
 
+  //To avoid chrome warning
   useEffect(() => {
-    auth().onAuthStateChanged(user => {
+    firebase.auth().onAuthStateChanged(user => {
       if (user) {
         setUser(user);
       } else {

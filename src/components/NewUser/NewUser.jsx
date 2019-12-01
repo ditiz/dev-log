@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { auth } from "firebase";
+import firebase from "firebase/app";
+import "firebase/auth";
 import "./NewUser.scss";
 
 const NewUser = () => {
@@ -9,7 +10,8 @@ const NewUser = () => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    auth()
+    firebase
+      .auth()
       .createUserWithEmailAndPassword(email, password)
       .catch(error => alert(error.message));
   };

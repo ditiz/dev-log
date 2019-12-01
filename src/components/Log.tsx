@@ -1,6 +1,8 @@
 import React from "react";
 import { Log } from "../types";
-import { database, auth } from "firebase";
+import * as firebase from "firebase/app";
+import "firebase/database";
+import "firebase/auth";
 
 interface LogProps {
   log: Log;
@@ -9,9 +11,10 @@ interface LogProps {
 const LogElement = ({ log }: LogProps) => {
   const removeLog = () => {
     if (window.confirm("Are you sure you want to delete this log?")) {
-      const currentUser = auth().currentUser;
+      const currentUser = firebase.auth().currentUser;
       if (currentUser && log.id) {
-        database()
+        firebase
+          .database()
           .ref("users/" + currentUser.uid + "/logs")
           .child(log.id)
           .remove();
